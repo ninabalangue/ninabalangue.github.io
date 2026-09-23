@@ -111,6 +111,26 @@ git push -u origin main`;
         {/* Content */}
         <div className="p-6 sm:p-8 space-y-6 overflow-y-auto text-xs sm:text-sm text-slate-300">
           
+          {/* White Screen Alert Box */}
+          <div className="p-4 rounded-2xl bg-amber-950/40 border border-amber-500/40 text-xs text-amber-200 space-y-2.5">
+            <div className="flex items-center gap-2 font-bold text-amber-300 text-sm">
+              <span className="p-1 rounded-lg bg-amber-500/20 text-amber-400">⚠️</span>
+              Seeing a Blank White Screen on your link?
+            </div>
+            <p className="text-slate-300 leading-relaxed">
+              <strong className="text-white">Why this happens:</strong> In your GitHub repository settings under <strong>Pages</strong>, the source is currently set to <em>"Deploy from a branch"</em>. This tells GitHub to serve raw uncompiled source files (<code className="text-amber-300">src/main.tsx</code>) which browsers cannot run, causing a blank screen.
+            </p>
+            <div className="p-3 rounded-xl bg-slate-950/80 border border-amber-500/30 text-slate-200 space-y-1.5 font-sans">
+              <div className="font-bold text-teal-300">⚡ 1-Minute Fix (In your open GitHub Pages tab):</div>
+              <ol className="list-decimal list-inside space-y-1 text-slate-300 text-[12px]">
+                <li>Click your open <strong className="text-white">Pages</strong> tab in GitHub (Settings &gt; Pages).</li>
+                <li>Under <strong className="text-white">Build and deployment &gt; Source</strong>, switch the dropdown from <em>"Deploy from a branch"</em> to <strong className="text-emerald-400">"GitHub Actions"</strong>.</li>
+                <li>Click the <strong className="text-white">Configure</strong> button next to <strong>Static HTML</strong> (or Vite), or ensure <code className="text-teal-300">.github/workflows/deploy.yml</code> is pushed.</li>
+                <li>GitHub will automatically compile and launch your live website in under 60 seconds!</li>
+              </ol>
+            </div>
+          </div>
+
           {/* Step 1 */}
           <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
             <div className="flex items-center gap-2 font-bold text-white text-sm">
