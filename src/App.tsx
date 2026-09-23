@@ -17,7 +17,7 @@ export default function App() {
   const [isGithubGuideOpen, setIsGithubGuideOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col selection:bg-teal-400 selection:text-slate-950">
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col selection:bg-orange-500 selection:text-white">
       {/* Navigation */}
       <Navbar 
         onOpenResume={() => setIsResumeOpen(true)}
