@@ -1,14 +1,13 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { 
   Copy, 
   ArrowRight, 
   FileText, 
   Mail, 
   Phone, 
-  MapPin, 
-  Camera,
+  MapPin,
   Upload,
-  RotateCcw
+  CheckCircle2
 } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
@@ -19,13 +18,44 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
-  const [profileImage, setProfileImage] = useState<string>(() => {
-    return localStorage.getItem('nina_custom_photo') || 'profile.png';
-  });
-  const [isCustomPhoto, setIsCustomPhoto] = useState<boolean>(() => {
-    return Boolean(localStorage.getItem('nina_custom_photo'));
-  });
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [imgTimestamp, setImgTimestamp] = useState(() => Date.now());
+  const [isUploading, setIsUploading] = useState(false);
+  const [uploadSuccess, setUploadSuccess] = useState(false);
+
+  // Only display the owner update button in dev mode / admin query, never for regular visitors
+  const isOwner = typeof window !== 'undefined' && (
+    window.location.hostname.includes('localhost') ||
+    window.location.hostname.includes('ais-dev-') ||
+    window.location.search.includes('admin') ||
+    window.location.hash.includes('admin')
+  );
+
+  const handlePhotoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setIsUploading(true);
+    try {
+      const response = await fetch('/api/upload-profile-photo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': file.type || 'application/octet-stream',
+        },
+        body: file,
+      });
+
+      if (response.ok) {
+        setUploadSuccess(true);
+        setImgTimestamp(Date.now());
+        setTimeout(() => setUploadSuccess(false), 4000);
+      }
+    } catch (err) {
+      console.error('Failed to save profile photo:', err);
+    } finally {
+      setIsUploading(false);
+      e.target.value = '';
+    }
+  };
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(PERSONAL_INFO.email);
@@ -37,104 +67,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
     navigator.clipboard.writeText(PERSONAL_INFO.phone);
     setCopiedPhone(true);
     setTimeout(() => setCopiedPhone(false), 2000);
-  };
-
-  // Client-side background removal helper for user-uploaded photos
-  const processCutout = (dataUrl: string, callback: (resultUrl: string) => void) => {
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.onload = () => {
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d', { willReadFrequently: true });
-      if (!ctx) {
-        callback(dataUrl);
-        return;
-      }
-      canvas.width = img.width;
-      canvas.height = img.height;
-      ctx.drawImage(img, 0, 0);
-
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const data = imageData.data;
-
-      // Sample corners to sample background color
-      const corners = [
-        0,
-        (canvas.width - 1) * 4,
-        ((canvas.height - 1) * canvas.width) * 4,
-        ((canvas.height - 1) * canvas.width + (canvas.width - 1)) * 4
-      ];
-
-      let bgR = 0, bgG = 0, bgB = 0;
-      for (const idx of corners) {
-        bgR += data[idx];
-        bgG += data[idx + 1];
-        bgB += data[idx + 2];
-      }
-      bgR /= corners.length;
-      bgG /= corners.length;
-      bgB /= corners.length;
-
-      const tolerance = 40;
-      const feather = 24;
-
-      for (let i = 0; i < data.length; i += 4) {
-        const r = data[i];
-        const g = data[i + 1];
-        const b = data[i + 2];
-        const dist = Math.sqrt((r - bgR) ** 2 + (g - bgG) ** 2 + (b - bgB) ** 2);
-
-        if (dist < tolerance) {
-          data[i + 3] = 0;
-        } else if (dist < tolerance + feather) {
-          const factor = (dist - tolerance) / feather;
-          data[i + 3] = Math.round(data[i + 3] * factor);
-        }
-      }
-
-      ctx.putImageData(imageData, 0, 0);
-      callback(canvas.toDataURL('image/png'));
-    };
-    img.src = dataUrl;
-  };
-
-  const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const isPng = file.type === 'image/png';
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const rawResult = event.target?.result as string;
-        
-        // If user uploaded a transparent PNG, use it directly; otherwise, run auto cutout
-        if (isPng) {
-          setProfileImage(rawResult);
-          setIsCustomPhoto(true);
-          try {
-            localStorage.setItem('nina_custom_photo', rawResult);
-          } catch {
-            // storage quota fallback
-          }
-        } else {
-          processCutout(rawResult, (cutoutResult) => {
-            setProfileImage(cutoutResult);
-            setIsCustomPhoto(true);
-            try {
-              localStorage.setItem('nina_custom_photo', cutoutResult);
-            } catch {
-              // storage quota fallback
-            }
-          });
-        }
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const handleResetPhoto = () => {
-    setProfileImage('profile.png');
-    setIsCustomPhoto(false);
-    localStorage.removeItem('nina_custom_photo');
   };
 
   return (
@@ -248,13 +180,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
 
           </div>
 
-          {/* RIGHT COLUMN: Profile Picture on Right Side */}
+          {/* RIGHT COLUMN: Static Profile Picture on Right Side */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center order-1 lg:order-2 relative py-4">
             
             {/* Subtle Sunset Halo */}
             <div className="absolute w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 bg-gradient-to-tr from-amber-400/20 via-orange-400/15 to-rose-400/20 rounded-full blur-3xl pointer-events-none -z-10" />
             
-            <div className="relative group w-full max-w-sm sm:max-w-md flex flex-col items-center">
+            <div className="relative w-full max-w-sm sm:max-w-md flex flex-col items-center">
               
               {/* Floating Verified Candidate Badge */}
               <div className="absolute -top-3 right-4 z-20 px-3.5 py-1.5 bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white text-[11px] font-black uppercase tracking-wider rounded-full shadow-lg shadow-orange-500/30 flex items-center gap-1.5">
@@ -262,81 +194,53 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 <span>Verified Candidate</span>
               </div>
 
-              {/* High-Impact Portrait Frame */}
-              <div 
-                onClick={() => fileInputRef.current?.click()}
-                className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden bg-gradient-to-tr from-amber-100 via-orange-50 to-rose-100 border-2 border-orange-200/80 group-hover:border-orange-400 shadow-2xl shadow-orange-500/15 transition-all duration-300 cursor-pointer"
-                title="Click to change or upload photo"
-              >
+              {/* High-Impact Static Portrait Frame */}
+              <div className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden bg-gradient-to-tr from-amber-100 via-orange-50 to-rose-100 border-2 border-orange-200/80 shadow-2xl shadow-orange-500/15">
                 <img
-                  src={profileImage}
+                  src={`profile.png?v=${imgTimestamp}`}
                   alt={PERSONAL_INFO.name}
-                  className="w-full h-full object-cover object-top filter contrast-[1.02] transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover object-[60%_top] filter contrast-[1.02]"
+                  referrerPolicy="no-referrer"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    if (target.src !== `${window.location.origin}/profile.png`) {
+                    if (!target.src.includes('profile.png')) {
                       target.src = 'profile.png';
                     }
                   }}
                 />
 
                 {/* Bottom Overlay Gradient with Name and Role */}
-                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950/85 via-slate-950/40 to-transparent p-5 text-center transition-opacity">
-                  <span className="text-base font-extrabold text-white tracking-wide block drop-shadow-sm">
+                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950/85 via-slate-950/40 to-transparent p-5 text-center">
+                  <span className="text-base sm:text-lg font-extrabold text-white tracking-wide block drop-shadow-sm">
                     {PERSONAL_INFO.name}
                   </span>
-                  <div className="text-xs text-amber-200 font-semibold mt-0.5">
+                  <div className="text-xs sm:text-sm text-amber-200 font-semibold mt-0.5">
                     Virtual Assistant • Legal & Admin Operations
                   </div>
                 </div>
-
-                {/* Floating "Change / Upload Photo" Button */}
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    fileInputRef.current?.click();
-                  }}
-                  className="absolute top-3.5 left-3.5 px-3 py-1.5 rounded-xl bg-white/95 hover:bg-white text-slate-800 text-xs font-bold backdrop-blur-md border border-orange-200 shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center gap-1.5 active:scale-95 z-20"
-                >
-                  <Camera className="w-3.5 h-3.5 text-orange-600" />
-                  <span>Change Photo</span>
-                </button>
               </div>
 
-              {/* Helper Bar */}
-              <div className="mt-3.5 flex items-center justify-between w-full px-2 text-xs text-slate-500">
-                <span className="flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                  Photo saved in browser
-                </span>
-                
-                <div className="flex items-center gap-2">
-                  <button 
-                    onClick={() => fileInputRef.current?.click()}
-                    className="text-orange-600 hover:text-orange-700 font-bold cursor-pointer underline flex items-center gap-1"
-                  >
-                    <Upload className="w-3.5 h-3.5" /> Upload Photo
-                  </button>
-
-                  {isCustomPhoto && (
-                    <button
-                      onClick={handleResetPhoto}
-                      className="p-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs transition-colors cursor-pointer"
-                      title="Reset photo"
-                    >
-                      <RotateCcw className="w-3 h-3" />
-                    </button>
+              {/* Owner-Only Photo Sync Utility (Only shown in dev/admin, never to visitors) */}
+              {isOwner && (
+                <div className="mt-3.5 flex flex-col items-center gap-1.5 z-20">
+                  <label className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 hover:bg-slate-900 text-white text-xs font-semibold shadow-md cursor-pointer transition-all hover:scale-105 active:scale-95 border border-slate-700">
+                    <Upload className="w-3.5 h-3.5 text-amber-400" />
+                    <span>{isUploading ? 'Saving Photo...' : 'Sync IMG_7583.JPG (Owner Only)'}</span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={handlePhotoUpload}
+                    />
+                  </label>
+                  {uploadSuccess && (
+                    <span className="inline-flex items-center gap-1.5 text-xs text-emerald-700 font-bold bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200 shadow-2xs">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                      Saved permanently to static profile.png!
+                    </span>
                   )}
                 </div>
-              </div>
-
-              <input
-                type="file"
-                ref={fileInputRef}
-                onChange={handlePhotoUpload}
-                accept="image/*"
-                className="hidden"
-              />
+              )}
 
             </div>
 
