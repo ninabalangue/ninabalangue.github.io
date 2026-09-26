@@ -3,23 +3,24 @@ import { SkillItem, ExperienceItem, AwardItem } from '../types';
 export const PERSONAL_INFO = {
   name: 'Niña Bernadeth R. Balangue',
   title: 'Executive & Administrative Virtual Assistant',
-  subTitle: 'Legal Operations & Remote Business Support Specialist',
+  subTitle: 'Legal Operations, Remote Business & Retail Management Specialist',
   email: 'nbrbalangue@gmail.com',
   phone: '(+63) 964 752 1575',
   location: 'Medina, Misamis Oriental, Philippines',
   availability: 'Available for Full-time & Part-time Remote Roles',
   timezone: 'GMT+8 (Philippine Time) • Adaptable to US, UK, and AUS Time Zones',
-  summary: 'Detail-oriented and high-capacity Virtual Assistant with an extensive background in government legal administration (480 hours at DILG-X Regional Legal Service), municipal operations, and student governance. Proven track record in streamlining executive workflows, managing complex calendars and inbox triage, organizing high-stakes documents, handling customer relations, and designing professional brand assets in Canva and Google Workspace.',
+  summary: 'Detail-oriented, versatile, and high-capacity Virtual Assistant with extensive real-world experience spanning government legal administration (480 hours at DILG-X Regional Legal Service), municipal operations, retail management, and university student governance. Proven track record in streamlining executive workflows, managing complex calendars and inbox triage, organizing high-stakes confidential documents, retail sales auditing, payroll facilitation, pop-up market coordination, customer relations, and designing professional brand assets in Canva and Google Workspace.',
   eligibility: 'Civil Service Examination (Professional Level) Passer',
   degree: 'Bachelor of Arts in Political Science',
   university: 'Mindanao State University - Iligan Institute of Technology (MSU-IIT)',
+  graduation: 'Graduated July 2026',
   honors: 'Consistent Academic Lister for all semesters (2022–2026)',
 };
 
 export const CORE_METRICS = [
   { label: 'Legal & Admin Experience', value: '480+ Hrs', sub: 'DILG-X Regional Legal Service' },
   { label: 'Government Eligibility', value: 'CSC Passer', sub: 'Professional Level Certified' },
-  { label: 'Academic Standing', value: 'Consistent Lister', sub: 'MSU-IIT BA Political Science' },
+  { label: 'Academic Standing', value: 'BA Graduate', sub: 'MSU-IIT • Graduated July 2026' },
   { label: 'Leadership Recognitions', value: '6 Awards', sub: 'Integrity, Service & Impact' },
 ];
 
@@ -73,12 +74,20 @@ export const SKILLS_DATA: SkillItem[] = [
     practicalUse: '480 hours at DILG-X handling sensitive legal communications, case files, and inter-agency endorsements.'
   },
   {
-    name: 'E-Commerce & Retail Operations',
+    name: 'Retail Management & Sales Auditing',
     category: 'operations',
     level: 'Advanced',
     iconName: 'ShoppingBag',
-    description: 'Order fulfillment, customer service, inventory reconciliations, and supplier communications.',
-    practicalUse: 'Owned & scaled Bonbon Blings; served as Retail Sales Manager for Wan-Wan Enterprise overseeing daily cash & stock.'
+    description: 'Store operations, daily sales auditing, cash reconciliation, payroll facilitation, and inventory controls.',
+    practicalUse: 'Served as Retail Sales Manager for Wan-Wan Enterprise overseeing daily cash balancing, staff payroll, and stock replenishment.'
+  },
+  {
+    name: 'E-Commerce & Pop-Up Market Coordination',
+    category: 'operations',
+    level: 'Advanced',
+    iconName: 'Layers',
+    description: 'Order fulfillment, customer support, supplier logistics, and pop-up market bazaar coordination.',
+    practicalUse: 'Scaled Bonbon Blings online and in university pop-ups; coordinated market stalls and fundraising campaigns for KASAMA.'
   },
   {
     name: 'Executive Minutes & Action Tracking',
@@ -86,7 +95,7 @@ export const SKILLS_DATA: SkillItem[] = [
     level: 'Expert',
     iconName: 'ClipboardList',
     description: 'Recording clear executive meeting summaries, decisions made, and actionable task assignments with deadlines.',
-    practicalUse: 'Secretariat support for MSU-IIT Supreme Student Council (Ways & Means committee) and municipal sessions.'
+    practicalUse: 'Secretariat support for MSU-IIT Supreme Student Council (Ways & Means committee) and municipal legislative sessions.'
   },
 ];
 
@@ -100,12 +109,12 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     location: 'Cagayan de Oro City, Misamis Oriental',
     type: 'Legal & Admin',
     badgeColor: 'emerald',
-    description: 'Served 480 intensive hours supporting the Regional Legal Service attorneys and senior administrative officers.',
+    description: 'Completed 480 intensive hours directly supporting the Regional Legal Service attorneys, legal officers, and executive staff.',
     highlights: [
       'Organized and indexed sensitive legal records, case dossiers, and inter-agency correspondences with 100% data confidentiality.',
       'Drafted formal routine endorsements, transmittals, and administrative legal documents adhering to strict civil service protocols.',
-      'Logged, tracked, and scheduled legal consultations and compliance deadlines across multiple regional government units.',
-      'Maintained digital and physical filing systems ensuring rapid retrieval for regional attorneys and legal researchers.'
+      'Logged, tracked, and scheduled legal consultations and compliance deadlines across multiple regional local government units.',
+      'Maintained digital Google Drive and physical filing systems ensuring rapid document retrieval for regional attorneys.'
     ],
     skillsApplied: ['Legal Records Management', 'Confidentiality', 'Google Drive/MS Office', 'Government Correspondence']
   },
@@ -120,7 +129,7 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     badgeColor: 'blue',
     description: 'Spearheaded front-desk client intake, applicant databases, and employment facilitation documentation.',
     highlights: [
-      'Processed intake data for hundreds of job-seekers and special program beneficiaries using Google Sheets and MS Excel.',
+      'Processed intake data and verified credentials for hundreds of job-seekers and special program beneficiaries using Google Sheets and MS Excel.',
       'Coordinated applicant appointment schedules and prepared verified statistical reports for DOLE regional submission.',
       'Delivered polite, prompt client-facing communication to job-seekers and local employers.'
     ],
@@ -135,13 +144,14 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     location: 'Iligan City, Lanao Del Norte',
     type: 'Student Governance',
     badgeColor: 'amber',
-    description: 'Elected/Appointed high-level executive secretary handling committee logistics, resource mobilization, and inter-committee scheduling.',
+    description: 'Appointed executive secretary handling committee logistics, pop-up market coordination, resource mobilization, and financial accounting.',
     highlights: [
+      'Spearheaded university fundraising initiatives, campus pop-up merchandise booths, and market coordination for student events.',
       'Recorded and published meticulous executive meeting minutes, resolutions, and financial tracking logs across 2 consecutive academic years.',
       'Awarded 6 major leadership and integrity honors for exceptional dedication, accountability, and ethical stewardship.',
       'Managed digital folders, project timelines, and logistical coordination for campus-wide initiatives and budget allocations.'
     ],
-    skillsApplied: ['Executive Minutes Taking', 'Financial Tracking', 'Multi-Stakeholder Coordination', 'Canva Presentations']
+    skillsApplied: ['Pop-Up Market Coordination', 'Executive Minutes Taking', 'Financial Tracking', 'Multi-Stakeholder Coordination']
   },
   {
     id: 'sangguniang-bayan',
@@ -152,29 +162,13 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     location: 'Medina, Misamis Oriental',
     type: 'Government & Public Service',
     badgeColor: 'blue',
-    description: 'Supported the municipal legislative body in archiving ordinances, resolutions, and session minutes.',
+    description: 'Supported the municipal legislative body in archiving ordinances, resolutions, and session minutes across two consecutive terms.',
     highlights: [
       'Encoded municipal ordinances, council resolutions, and committee reports into the municipal digital repository.',
       'Assisted in preparing session agenda binders, attendee attendance logs, and legislative calendars.',
-      'Re-hired for a second consecutive term due to proven reliability, fast typing speed, and attention to detail.'
+      'Re-hired for a second consecutive term due to proven reliability, fast typing speed, and meticulous attention to detail.'
     ],
     skillsApplied: ['Legislative Archiving', 'Agenda Management', 'Typing & Data Entry', 'Filing Systems']
-  },
-  {
-    id: 'bonbon-blings',
-    role: 'Founder & Operations Manager',
-    organization: 'Bonbon Blings',
-    period: 'Mar 2022 – Present',
-    location: 'Iligan City & Remote',
-    type: 'Business & E-Commerce',
-    badgeColor: 'purple',
-    description: 'Bootstrapped and managed an independent accessories e-commerce brand, balancing creative, marketing, and logistics.',
-    highlights: [
-      'Designed all visual promotional graphics, product banners, and social media posts using Canva.',
-      'Managed customer inquiries, orders, order tracking, and post-purchase follow-ups with 5-star feedback.',
-      'Maintained inventory spreadsheets and profit/expense tracking sheets in Google Sheets.'
-    ],
-    skillsApplied: ['Canva Graphics', 'Customer Service', 'E-Commerce Logistics', 'Spreadsheet Budgeting']
   },
   {
     id: 'wan-wan-sales',
@@ -184,13 +178,31 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     location: 'Medina, Misamis Oriental',
     type: 'Business & E-Commerce',
     badgeColor: 'purple',
-    description: 'Managed retail floor operations, daily cash reconciliation, and stock inventory audits.',
+    description: 'Managed retail store operations, customer service, daily sales auditing, inventory control, and staff payroll.',
     highlights: [
-      'Performed daily end-of-day sales auditing and cash balance reporting.',
-      'Supervised inventory stock replenishments and resolved on-site customer requests.',
-      'Trained team members on standard operating procedures and customer service standards.'
+      'Delivered exceptional customer service, direct customer engagement, and handled active retail sales transactions.',
+      'Performed daily end-of-day sales auditing, cash reconciliation, and facilitated staff payroll payments.',
+      'Oversaw inventory management, stock replenishment cycles, and resolved on-site customer and supplier inquiries.',
+      'Trained and supervised team members on standard operating procedures, customer engagement, and cash handling.'
     ],
-    skillsApplied: ['Cash Reconciliation', 'Inventory Management', 'Customer Relations', 'Team Leadership']
+    skillsApplied: ['Customer Engagement', 'Sales Auditing & Cash Reconciliation', 'Payroll Facilitation', 'Inventory Management', 'Team Training']
+  },
+  {
+    id: 'bonbon-blings',
+    role: 'Founder & Operations Manager',
+    organization: 'Bonbon Blings',
+    period: 'Mar 2022 – Present',
+    location: 'Iligan City & Remote',
+    type: 'Business & E-Commerce',
+    badgeColor: 'purple',
+    description: 'Bootstrapped and managed an independent accessories brand, balancing e-commerce operations, pop-up market booths, creative design, and logistics.',
+    highlights: [
+      'Organized and coordinated on-ground pop-up market booths and bazaars alongside digital e-commerce sales channels.',
+      'Designed all visual promotional graphics, product banners, and social media posts using Canva Pro.',
+      'Managed customer inquiries, orders, order tracking, and post-purchase follow-ups with 100% positive satisfaction feedback.',
+      'Maintained inventory spreadsheets and profit/expense tracking sheets in Google Sheets.'
+    ],
+    skillsApplied: ['Pop-Up Market Booths', 'Canva Graphics', 'Customer Service', 'E-Commerce Logistics', 'Spreadsheet Budgeting']
   }
 ];
 
@@ -243,15 +255,15 @@ export const EDUCATION_DATA = [
   {
     institution: 'Mindanao State University - Iligan Institute of Technology (MSU-IIT)',
     degree: 'Bachelor of Arts in Political Science',
-    period: 'A.Y. 2022 – Present',
+    period: '2022 – July 2026',
     location: 'Iligan City, Lanao Del Norte',
-    honors: 'Consistent Academic Lister for all semesters (2022–2026)',
-    details: 'Focus on governance, public administration, legal systems, and policy analysis. Developed superior research, formal drafting, and analytical problem-solving skills.'
+    honors: 'Consistent Academic Lister',
+    details: 'Graduated in July 2026. Specialized in governance, public administration, legal systems, and policy analysis. Developed superior research, formal drafting, and analytical problem-solving skills.'
   },
   {
     institution: 'Christ the King College - Gingoog',
     degree: 'Senior High School - Humanities and Social Sciences (HUMSS)',
-    period: 'A.Y. 2020 – 2022',
+    period: '2020 – 2022',
     location: 'Gingoog City, Misamis Oriental',
     honors: 'Graduated With Honors',
     details: 'Excellence in oral communication, social sciences, creative writing, and leadership.'
@@ -261,7 +273,7 @@ export const EDUCATION_DATA = [
 export const RECRUITER_FAQS = [
   {
     q: 'What specific VA roles is Niña best suited for?',
-    a: 'Executive Virtual Assistant, Administrative Assistant, Legal Assistant / Paralegal Support, Operations Coordinator, Customer Support Lead, and E-Commerce Assistant. Her 480 hours at DILG-X and local government offices make her extraordinarily strong in document accuracy, discretion, and executive communication.'
+    a: 'Executive Virtual Assistant, Administrative Assistant, Legal Assistant / Paralegal Support, Retail / E-Commerce Operations Coordinator, Customer Support Lead, and Project Assistant. Her 480 hours at DILG-X, municipal public service, and Wan-Wan Enterprise retail management make her extraordinarily strong in document accuracy, discretion, customer care, and executive communication.'
   },
   {
     q: 'What is her availability and timezone flexibility?',

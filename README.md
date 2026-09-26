@@ -8,6 +8,28 @@ A high-converting, recruiter-ready personal portfolio website tailored for **Exe
 
 This project is built with **React, Vite, and Tailwind CSS**. It has already been configured with `base: './'` in `vite.config.ts`, meaning you can deploy it directly to GitHub Pages without broken link issues!
 
+### 📸 Updating Your Profile Photo on GitHub Pages
+
+GitHub Pages uses the static image in `public/profile.png`. To ensure your photo is displayed:
+
+1. **Directly on GitHub.com**:
+   - Go to your repository `ninabalangue/ninabalangue.github.io`
+   - Open the `public/` directory
+   - Click **Add file** > **Upload files**
+   - Upload your portrait (`IMG_7583.JPG`) and make sure the file is named `profile.png`
+   - Click **Commit changes**
+   - GitHub Actions will automatically re-deploy your site with your photo in ~1 minute!
+
+2. **From your computer / Terminal**:
+   ```bash
+   cp /path/to/IMG_7583.JPG public/profile.png
+   git add public/profile.png
+   git commit -m "Update profile photo"
+   git push origin main
+   ```
+
+---
+
 ### Option A: Automatic Deployment via GitHub Actions (Recommended)
 
 1. **Create a GitHub Repository**:

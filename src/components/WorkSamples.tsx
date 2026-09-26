@@ -28,8 +28,10 @@ export const WorkSamples: React.FC = () => {
     { id: 'REC-1042', task: 'Executive Calendar Time-Blocking & Zoom Buffers', category: 'Calendar', owner: 'Niña B.', status: 'Completed', deadline: 'Daily', accuracy: '99.8%' },
     { id: 'REC-1043', task: 'DOLE SPES Candidate Intake Verification Form', category: 'Data Entry', owner: 'Niña B.', status: 'Completed', deadline: '2026-06-10', accuracy: '100%' },
     { id: 'REC-1044', task: 'Sangguniang Bayan Session Resolution Formatting', category: 'Government', owner: 'Niña B.', status: 'Completed', deadline: '2025-07-22', accuracy: '100%' },
-    { id: 'REC-1045', task: 'Bonbon Blings E-Commerce Inventory Reconciliation', category: 'Operations', owner: 'Niña B.', status: 'Completed', deadline: 'Weekly', accuracy: '99.5%' },
+    { id: 'REC-1045', task: 'Bonbon Blings E-Commerce & Pop-Up Market Inventory', category: 'Operations', owner: 'Niña B.', status: 'Completed', deadline: 'Weekly', accuracy: '99.5%' },
     { id: 'REC-1046', task: 'KASAMA Student Council Ways & Means Financial Audit', category: 'Finance Log', owner: 'Niña B.', status: 'Completed', deadline: '2025-08-30', accuracy: '100%' },
+    { id: 'REC-1047', task: 'Wan-Wan Enterprise Daily Retail Sales Audit & Payroll Ledger', category: 'Retail Audit', owner: 'Niña B.', status: 'Completed', deadline: 'Bi-Monthly', accuracy: '100%' },
+    { id: 'REC-1048', task: 'Campus Bazaar & Pop-Up Market Vendor Coordination Matrix', category: 'Market Coord', owner: 'Niña B.', status: 'Completed', deadline: '2025-05-18', accuracy: '100%' },
   ];
 
   const filteredSheetRows = sampleSheetData.filter(row => {

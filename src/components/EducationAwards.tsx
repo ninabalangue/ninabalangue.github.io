@@ -62,9 +62,9 @@ export const EducationAwards: React.FC = () => {
                   key={idx} 
                   className="bg-white rounded-2xl p-6 border border-slate-200 hover:border-rose-400 transition-all space-y-3 shadow-xs"
                 >
-                  <div className="flex items-start justify-between gap-2">
+                  <div className="flex items-center gap-2.5 flex-wrap">
                     <span className="text-xs font-bold text-orange-700 font-mono">{edu.period}</span>
-                    <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700">
+                    <span className="inline-flex items-center text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700">
                       {edu.honors}
                     </span>
                   </div>

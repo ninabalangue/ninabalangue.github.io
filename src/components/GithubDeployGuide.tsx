@@ -111,6 +111,47 @@ git push -u origin main`;
         {/* Content */}
         <div className="p-6 sm:p-8 space-y-6 overflow-y-auto text-xs sm:text-sm text-slate-600">
           
+          {/* Profile Photo Fix Callout */}
+          <div className="p-4 rounded-2xl bg-orange-50 border-2 border-orange-300 text-xs text-slate-800 space-y-3 shadow-xs">
+            <div className="flex items-center gap-2 font-bold text-orange-950 text-sm">
+              <span className="p-1.5 rounded-xl bg-orange-200 text-orange-800 text-base">📸</span>
+              <span>Seeing a different photo on ninabalangue.github.io? Here is the 1-minute fix!</span>
+            </div>
+            <p className="text-slate-700 leading-relaxed text-xs">
+              GitHub Pages builds the website from the static asset stored in <code className="bg-orange-100 text-orange-900 font-mono font-bold px-1.5 py-0.5 rounded">public/profile.png</code> inside your GitHub repository. Because your repository was created with the initial template photo, GitHub deployed that file.
+            </p>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+              <div className="p-3 bg-white rounded-xl border border-orange-200 space-y-1.5">
+                <div className="font-bold text-orange-800 text-xs flex items-center gap-1.5">
+                  <span>Option 1: Directly on GitHub.com (No Code)</span>
+                </div>
+                <ol className="list-decimal list-inside space-y-1 text-[11px] text-slate-600 leading-normal">
+                  <li>Open your repo: <strong className="text-slate-800 font-mono">github.com/ninabalangue/ninabalangue.github.io</strong></li>
+                  <li>Click into the <strong className="text-orange-700 font-mono">public</strong> folder.</li>
+                  <li>Click <strong className="text-slate-800">Add file</strong> &gt; <strong className="text-slate-800">Upload files</strong>.</li>
+                  <li>Drag your photo (<strong className="text-slate-800">IMG_7583.JPG</strong>) and name it <code className="bg-slate-100 font-bold px-1 rounded">profile.png</code>.</li>
+                  <li>Click <strong className="text-emerald-700 font-bold">Commit changes</strong>. Done! GitHub Pages will update within 1-2 minutes.</li>
+                </ol>
+              </div>
+
+              <div className="p-3 bg-white rounded-xl border border-orange-200 space-y-1.5">
+                <div className="font-bold text-orange-800 text-xs flex items-center gap-1.5">
+                  <span>Option 2: From Terminal / Local Folder</span>
+                </div>
+                <div className="space-y-1 text-[11px] text-slate-600 leading-normal font-mono bg-slate-900 text-slate-200 p-2 rounded-lg text-[10px]">
+                  <div># Copy your photo to public/profile.png</div>
+                  <div className="text-orange-400">cp ~/Downloads/IMG_7583.JPG public/profile.png</div>
+                  <div className="pt-1"># Commit and push to GitHub</div>
+                  <div className="text-emerald-400">git add public/profile.png</div>
+                  <div className="text-emerald-400">git commit -m "Update profile photo"</div>
+                  <div className="text-emerald-400">git push origin main</div>
+                </div>
+                <p className="text-[10px] text-slate-500">GitHub Actions will trigger and automatically update your live site!</p>
+              </div>
+            </div>
+          </div>
+
           {/* White Screen Alert Box */}
           <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-xs text-amber-950 space-y-2.5">
             <div className="flex items-center gap-2 font-bold text-amber-900 text-sm">

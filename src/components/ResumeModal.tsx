@@ -31,9 +31,10 @@ ${PERSONAL_INFO.eligibility}
 
 TECHNICAL & VIRTUAL ASSISTANT SKILLS
 - Google Workspace: Docs, Sheets, Forms, Drive, Calendar, Gmail
-- Microsoft 365: Word, Excel, PowerPoint, Outlook
-- Creative & Design: Canva Graphic Design
-- Operations: Calendar & Inbox Zero Management, Executive Minutes, Travel Coordination, Client Support
+- Microsoft 365: Word, Excel (Formulas, Pivot Tables, Audits), PowerPoint, Outlook
+- Creative & Design: Canva Graphic Design & Social Brand Kits
+- Operations & Administration: Calendar & Inbox Zero Management, Executive Minutes, Travel Coordination, Client Support
+- Retail & Commerce: Store Operations, Daily Sales Auditing, Payroll Facilitation, Pop-Up Market Coordination
 
 WORK & LEADERSHIP EXPERIENCE
 ${EXPERIENCE_DATA.map(exp => `
@@ -149,6 +150,9 @@ ${AWARDS_DATA.map(a => `* ${a.title} - ${a.organization} (${a.period})`).join('\
               <div>
                 <strong className="text-slate-900">Design & Operations:</strong> Canva Graphic Design, Calendar Management, Inbox Zero, Meeting Minutes
               </div>
+              <div className="sm:col-span-2">
+                <strong className="text-slate-900">Retail & Operations:</strong> Retail Store Management, Daily Sales Auditing, Payroll Facilitation, Pop-Up Market Coordination
+              </div>
             </div>
           </div>
 
@@ -189,7 +193,9 @@ ${AWARDS_DATA.map(a => `* ${a.title} - ${a.organization} (${a.period})`).join('\
                 <div key={idx} className="flex flex-col sm:flex-row sm:items-baseline justify-between">
                   <div>
                     <strong className="text-slate-900">{edu.degree}</strong> — {edu.institution}
-                    <div className="text-[11px] text-emerald-800 font-semibold">{edu.honors}</div>
+                    <div className="text-[11px] text-emerald-800 font-semibold">
+                      {edu.honors}
+                    </div>
                   </div>
                   <div className="text-[11px] text-slate-600 font-mono sm:text-right shrink-0">
                     {edu.period} | {edu.location}

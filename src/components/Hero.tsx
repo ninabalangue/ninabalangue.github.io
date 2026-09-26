@@ -109,8 +109,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
               Empowering busy founders, executives, and remote teams with proactive executive coordination, 
               inbox zero management, high-accuracy document preparation, and confidential administration. 
               Backed by <strong className="text-slate-900 font-bold">480 hours in regional government legal services</strong>, 
-              official <strong className="text-orange-700 font-bold">Civil Service Professional Eligibility</strong>, and 
-              proven e-commerce operations.
+              official <strong className="text-orange-700 font-bold">Civil Service Professional Eligibility</strong>, 
+              proven retail store management, and e-commerce operations.
             </p>
 
             {/* Prominent Call to Action Buttons */}
