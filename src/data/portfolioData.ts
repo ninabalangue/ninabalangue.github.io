@@ -13,14 +13,14 @@ export const PERSONAL_INFO = {
   eligibility: 'Civil Service Examination (Professional Level) Passer',
   degree: 'Bachelor of Arts in Political Science',
   university: 'Mindanao State University - Iligan Institute of Technology (MSU-IIT)',
-  graduation: 'Graduated July 2026',
-  honors: 'Consistent Academic Lister for all semesters (2022–2026)',
+  graduation: 'Graduated Cum Laude (July 2026)',
+  honors: 'Graduated Cum Laude • Consistent Academic Lister for all semesters (2022–2026)',
 };
 
 export const CORE_METRICS = [
   { label: 'Legal & Admin Experience', value: '480+ Hrs', sub: 'DILG-X Regional Legal Service' },
   { label: 'Government Eligibility', value: 'CSC Passer', sub: 'Professional Level Certified' },
-  { label: 'Academic Standing', value: 'BA Graduate', sub: 'MSU-IIT • Graduated July 2026' },
+  { label: 'Academic Standing', value: 'Cum Laude', sub: 'MSU-IIT • Graduated July 2026' },
   { label: 'Leadership Recognitions', value: '6 Awards', sub: 'Integrity, Service & Impact' },
 ];
 
@@ -257,14 +257,16 @@ export const EDUCATION_DATA = [
     degree: 'Bachelor of Arts in Political Science',
     period: '2022 – July 2026',
     location: 'Iligan City, Lanao Del Norte',
+    latinHonor: 'Cum Laude',
     honors: 'Consistent Academic Lister',
-    details: 'Graduated in July 2026. Specialized in governance, public administration, legal systems, and policy analysis. Developed superior research, formal drafting, and analytical problem-solving skills.'
+    details: 'Graduated Cum Laude in July 2026 from MSU-IIT. Specialized in governance, public administration, legal systems, and policy analysis. Consistent Academic Lister throughout undergraduate studies with superior research, formal drafting, and analytical problem-solving skills.'
   },
   {
     institution: 'Christ the King College - Gingoog',
     degree: 'Senior High School - Humanities and Social Sciences (HUMSS)',
     period: '2020 – 2022',
     location: 'Gingoog City, Misamis Oriental',
+    latinHonor: '',
     honors: 'Graduated With Honors',
     details: 'Excellence in oral communication, social sciences, creative writing, and leadership.'
   }

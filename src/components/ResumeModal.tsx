@@ -43,8 +43,8 @@ ${exp.highlights.map(h => `  - ${h}`).join('\n')}
 `).join('')}
 
 EDUCATION
-* ${EDUCATION_DATA[0].degree} - ${EDUCATION_DATA[0].institution} (${EDUCATION_DATA[0].period})
-  Honors: ${EDUCATION_DATA[0].honors}
+* ${EDUCATION_DATA[0].degree}${EDUCATION_DATA[0].latinHonor ? ` (${EDUCATION_DATA[0].latinHonor})` : ''} - ${EDUCATION_DATA[0].institution} (${EDUCATION_DATA[0].period})
+  Honors: ${EDUCATION_DATA[0].latinHonor ? `Graduated ${EDUCATION_DATA[0].latinHonor} • ` : ''}${EDUCATION_DATA[0].honors}
 
 HONORS & AWARDS
 ${AWARDS_DATA.map(a => `* ${a.title} - ${a.organization} (${a.period})`).join('\n')}
@@ -192,9 +192,11 @@ ${AWARDS_DATA.map(a => `* ${a.title} - ${a.organization} (${a.period})`).join('\
               {EDUCATION_DATA.map((edu, idx) => (
                 <div key={idx} className="flex flex-col sm:flex-row sm:items-baseline justify-between">
                   <div>
-                    <strong className="text-slate-900">{edu.degree}</strong> — {edu.institution}
-                    <div className="text-[11px] text-emerald-800 font-semibold">
-                      {edu.honors}
+                    <strong className="text-slate-900">{edu.degree}</strong>
+                    {edu.latinHonor && <span className="text-amber-800 font-bold ml-1">({edu.latinHonor})</span>} — {edu.institution}
+                    <div className="text-[11px] text-emerald-800 font-semibold flex items-center gap-1.5 flex-wrap mt-0.5">
+                      {edu.latinHonor && <span className="text-amber-800 font-bold">Graduated {edu.latinHonor} •</span>}
+                      <span>{edu.honors}</span>
                     </div>
                   </div>
                   <div className="text-[11px] text-slate-600 font-mono sm:text-right shrink-0">
