@@ -31,6 +31,30 @@ export interface WorkSample {
   tags: string[];
 }
 
+export interface CanvaWorkSample {
+  id: string;
+  client: 'Clarion-Aimera' | 'Bonbon Blings' | 'DILG Region X';
+  title: string;
+  subtitle: string;
+  category: string;
+  format: string;
+  dimensions?: string;
+  description: string;
+  imageUrl?: string;
+  fileName?: string;
+  externalLink?: string;
+  canvaLink?: string;
+  gradient?: string;
+  tags?: string[];
+  pdfSlides?: {
+    slideNumber: number;
+    title: string;
+    subtitle?: string;
+    content: string[];
+    highlight?: string;
+  }[];
+}
+
 export interface AwardItem {
   title: string;
   role: string;

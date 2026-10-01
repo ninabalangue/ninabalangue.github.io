@@ -1,4 +1,4 @@
-import { SkillItem, ExperienceItem, AwardItem } from '../types';
+import { SkillItem, ExperienceItem, AwardItem, CanvaWorkSample } from '../types';
 
 export const PERSONAL_INFO = {
   name: 'Niña Bernadeth R. Balangue',
@@ -111,12 +111,13 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     badgeColor: 'emerald',
     description: 'Completed 480 intensive hours directly supporting the Regional Legal Service attorneys, legal officers, and executive staff.',
     highlights: [
+      'Spearheaded the design and deployment of the official DILG Region X Regional Legal Service Google Site portal (https://sites.google.com/view/ord-rls-region-10/home?authuser=0) centralizing legal advisories, case transmittal workflows, and regional resources.',
       'Organized and indexed sensitive legal records, case dossiers, and inter-agency correspondences with 100% data confidentiality.',
       'Drafted formal routine endorsements, transmittals, and administrative legal documents adhering to strict civil service protocols.',
       'Logged, tracked, and scheduled legal consultations and compliance deadlines across multiple regional local government units.',
       'Maintained digital Google Drive and physical filing systems ensuring rapid document retrieval for regional attorneys.'
     ],
-    skillsApplied: ['Legal Records Management', 'Confidentiality', 'Google Drive/MS Office', 'Government Correspondence']
+    skillsApplied: ['Legal Records Management', 'Google Sites Web Design', 'Confidentiality', 'Google Drive/MS Office', 'Government Correspondence']
   },
   {
     id: 'peso-clerical',
@@ -290,3 +291,255 @@ export const RECRUITER_FAQS = [
     a: 'Trained through 480 hours at the DILG Regional Legal Service handling sensitive legal casework, state records, and government communications. She adheres strictly to Non-Disclosure Agreements (NDAs), uses password managers, and maintains clean file access protocols.'
   }
 ];
+
+/**
+ * CANVA & VISUAL COLLATERAL WORK SAMPLES
+ * Separated by Client:
+ * 1. Clarion-Aimera Training and Assessment Center (TESDA Accredited)
+ * 2. Bonbon Blings (Handmade Accessories & E-Commerce + 8-Page Pitch Deck)
+ * 3. DILG Regional Legal Service Region X (Official Google Site Portal)
+ */
+export const CANVA_WORK_SAMPLES: CanvaWorkSample[] = [
+  // --- CLARION-AIMERA TRAINING & ASSESSMENT CENTER ---
+  {
+    id: 'clarion-cover-page',
+    client: 'Clarion-Aimera',
+    title: 'Official Social Media Brand Cover',
+    subtitle: 'Clarion-Aimera Training & Assessment Center, Inc. • TESDA Accredited',
+    category: 'Brand Identity & Banner',
+    format: 'Facebook Cover Banner',
+    dimensions: '820 × 312 px (HD Vector)',
+    description: 'Designed the official branded Facebook header for Clarion-Aimera Training and Assessment Center. Highlights core TESDA-accredited technical programs in Electrical Installation & Maintenance (EIM) and Shielded Metal Arc Welding (SMAW), official school contact hotlines, accreditation badges, and Medina, Misamis Oriental campus location with a modern crimson red gradient aesthetic.',
+    fileName: 'Cover Page.png',
+    imageUrl: '/samples/Cover Page.png',
+    canvaLink: '',
+    gradient: 'from-red-700 via-rose-800 to-amber-600',
+    tags: ['Brand Identity', 'Social Banner', 'TESDA Accredited', 'EIM & SMAW']
+  },
+  {
+    id: 'clarion-safety-priority',
+    client: 'Clarion-Aimera',
+    title: 'Workshop Safety Protocol & PPE Guide',
+    subtitle: '"Your Safety is Our Priority!" • Technical Training Guidelines',
+    category: 'Educational Infographic',
+    format: 'Social Media Feed Asset',
+    dimensions: '1080 × 1080 px (1:1 Square)',
+    description: 'Trainee-focused occupational health and safety graphic illustrating essential Personal Protective Equipment (PPE) for welding and electrical laboratories: Safety Goggles / Welding Helmet, Heavy-Duty Protective Leather Gloves, and Protective Welding Jacket. Features the official Clarion-Aimera motto "Empowering Skills, Shaping Futures" and TESDA insignia.',
+    fileName: '6.png',
+    imageUrl: '/samples/6.png',
+    canvaLink: '',
+    gradient: 'from-emerald-700 via-teal-800 to-amber-500',
+    tags: ['Safety Protocol', 'PPE Infographic', 'Trainee Onboarding', 'Visual Guide']
+  },
+  {
+    id: 'clarion-certifications-doors',
+    client: 'Clarion-Aimera',
+    title: 'Career Advancement & Certification Advisory',
+    subtitle: '"Getting Certifications Open More Doors for Opportunities"',
+    category: 'Student Recruitment',
+    format: 'Social Media Feed Post',
+    dimensions: '1080 × 1080 px (1:1 Square)',
+    description: 'Motivational recruitment collateral targeted at youth and vocational job-seekers. Communicates the tangible career benefits of acquiring government-recognized TESDA national certifications, paired with an action-driving "Reserve Your Slot!" prompt and multi-channel intake hotlines.',
+    fileName: '7.png',
+    imageUrl: '/samples/7.png',
+    canvaLink: '',
+    gradient: 'from-amber-500 via-orange-600 to-emerald-700',
+    tags: ['Student Enrollment', 'Career Mobility', 'Call to Action', 'Social Media']
+  },
+  {
+    id: 'clarion-licensed-electrician',
+    client: 'Clarion-Aimera',
+    title: 'EIM NC II Electrician Program Campaign',
+    subtitle: '"Train to Become a Licensed Electrician!" • TESDA NC II',
+    category: 'Vocational Course Promotion',
+    format: 'Recruitment Infographic',
+    dimensions: '1080 × 1080 px (1:1 Square)',
+    description: 'Comprehensive program spotlight for Electrical Installation and Maintenance (EIM) NC II. Features high-clarity bullet points emphasizing hands-on training with industry experts, official TESDA accreditation, and preparation for the National Certification assessment.',
+    fileName: '8.png',
+    imageUrl: '/samples/8.png',
+    canvaLink: '',
+    gradient: 'from-emerald-600 via-teal-700 to-amber-500',
+    tags: ['EIM NC II', 'Hands-On Training', 'Technical Skills', 'Admissions']
+  },
+  {
+    id: 'clarion-welding-career',
+    client: 'Clarion-Aimera',
+    title: 'SMAW Welding Career Ignition Campaign',
+    subtitle: '"Ignite Your Welding Career Today!" • High-Demand Trades',
+    category: 'Vocational Course Promotion',
+    format: 'Recruitment Infographic',
+    dimensions: '1080 × 1080 px (1:1 Square)',
+    description: 'High-impact technical recruitment visual showcasing the strong domestic and overseas demand for certified Shielded Metal Arc Welders (SMAW). Outlines rigorous hands-on welding practice, workplace safety protocols, and national qualification standards.',
+    fileName: '9.png',
+    imageUrl: '/samples/9.png',
+    canvaLink: '',
+    gradient: 'from-orange-600 via-amber-600 to-emerald-800',
+    tags: ['SMAW Welding', 'In-Demand Trades', 'Overseas Employment', 'TESDA']
+  },
+
+  // --- BONBON BLINGS (E-COMMERCE, POP-UPS & PITCH DECK) ---
+  {
+    id: 'bonbon-pitch-deck-pdf',
+    client: 'Bonbon Blings',
+    title: 'Brand Partnership & Retail Consignment Pitch Deck',
+    subtitle: '8-Page Executive Presentation • Café Consignment & Event Packages',
+    category: 'Business Proposal Deck',
+    format: '8-Page Slide Presentation (16:9 HD)',
+    dimensions: '1920 × 1080 px (HD Widescreen)',
+    description: 'Full 8-page investor and retail partnership pitch presentation developed in Canva. Outlines the brand founding story by MSU-IIT student Niña Balangue, private event packages (Bling Loopz), pop-up bazaar credentials, café collaboration terms with a 20% revenue share consignment model, mobile cart display specifications (160×85×55cm), and systematic restocking/sales auditing schedules.',
+    fileName: 'bonbon blings presentation.pdf',
+    imageUrl: '/samples/bonbon blings presentation.pdf',
+    canvaLink: '',
+    gradient: 'from-rose-500 via-pink-400 to-amber-300',
+    tags: ['Pitch Deck', '8 Slides', 'Consignment Proposal', 'Event Packages', 'Canva Pro'],
+    pdfSlides: [
+      {
+        slideNumber: 1,
+        title: 'Bonbon Blings Cover & Executive Contacts',
+        subtitle: 'Brand Overview & Multi-Channel Contact Details',
+        content: [
+          'Official brand identity featuring pastel gradient aesthetics and whimsical sparkle typography.',
+          'Direct customer & partner touchpoints: Instagram (@bonbonblings), Facebook (Bonbon Blings), and Mobile (+63 964 752 1575).'
+        ],
+        highlight: 'Primary Brand Cover Page'
+      },
+      {
+        slideNumber: 2,
+        title: 'Who Are We? Founder Story & Brand Mission',
+        subtitle: 'Student Entrepreneurship & Creative Journey',
+        content: [
+          'Started as a passionate creative hobby that grew into an established student-run brand founded by Niña Balangue (4th-year student at MSU-IIT).',
+          'Product catalog includes handcrafted bead bracelets, playful phone lanyards, custom keychains, and fuzzy wire pocket mirrors crafted with love and sparkle.'
+        ],
+        highlight: 'Authentic Artisan Storytelling'
+      },
+      {
+        slideNumber: 3,
+        title: 'Bling Loopz Event Packages & Tiered Pricing',
+        subtitle: 'Custom Craft Stations for Parties & Corporate Celebrations',
+        content: [
+          '₱2,500 Tier: 20 Pax package with wire loops, basic & premium charms (including letters), and customized packaging card.',
+          '₱3,500 Tier: 30 Pax package for medium-sized gatherings and birthdays.',
+          '₱5,000 Tier: 50 Pax premium event package with full custom event cards and priority support.'
+        ],
+        highlight: 'Event Package Revenue Stream'
+      },
+      {
+        slideNumber: 4,
+        title: 'Our Proven Bazaar & Trade Fair Track Record',
+        subtitle: '2+ Years of Active Market Pop-Up Execution',
+        content: [
+          'Campus Bazaars: Consistent exhibitor at MSU-IIT Society and College Days, FEB-IBIG Bazaars, Christmas Bazaar, and Welcome Freshies Trade Fair.',
+          'City Pop-Ups: Expanded beyond campus to curated local creative hubs including SUOK Bistro’s Yard Finds and URBAN Coffee Studio’s Flea Market.'
+        ],
+        highlight: 'Demonstrated Foot-Traffic Traction'
+      },
+      {
+        slideNumber: 5,
+        title: 'Partnership Value Proposition: Café Collaboration',
+        subtitle: '"Help Us Bring Our Little Treasures to Happy Hands"',
+        content: [
+          'Mutual Value: Creates a charming artisan corner inside host cafés, enhancing cozy customer atmosphere while patrons enjoy their coffee.',
+          'Zero Overhead: Low-footprint, aesthetic display adding retail delight without disrupting normal café floor operations.'
+        ],
+        highlight: 'Win-Win Host Café Alignment'
+      },
+      {
+        slideNumber: 6,
+        title: 'Proposed Display Set-Up & Consignment Economics',
+        subtitle: '20% Revenue Share Model with Zero Upfront Cost',
+        content: [
+          'Consignment Basis: Host venue incurs zero upfront capital expense or inventory financial risk.',
+          '20% Markup Revenue Share: A 20% margin is added to each item, flowing directly to the café as passive income on every sale.',
+          'Physical Footprint: Clean, vertical white grid cart (160 cm H × 85 cm W × 55 cm D) with wheels for effortless positioning.'
+        ],
+        highlight: '20% Margin Consignment Model'
+      },
+      {
+        slideNumber: 7,
+        title: 'Restocking Operations & Daily Sales Audit SOP',
+        subtitle: 'Hands-Off Management for Host Café Staff',
+        content: [
+          'Restocking Schedule: Handled personally by Niña on a weekly or bi-weekly cadence with full inventory reconciliation logs.',
+          'Zero Staff Burden: Café staff only ring up sales; inventory tracking sheets are maintained independently.',
+          'Sales Collection: Direct cash/digital remittance gathered during scheduled restocking visits.'
+        ],
+        highlight: 'Frictionless Partner Operations'
+      },
+      {
+        slideNumber: 8,
+        title: 'Closing Appreciation & Brand Stewardship',
+        subtitle: '"Thank You for Supporting My Handmade Dreams"',
+        content: [
+          'Heartfelt closing by Niña Balangue affirming long-term commitment, quality stewardship, and ethical business collaboration.'
+        ],
+        highlight: 'Personal Founder Accountability'
+      }
+    ]
+  },
+  {
+    id: 'bonbon-byo-bouquet',
+    client: 'Bonbon Blings',
+    title: 'Build Your Own Bead Bouquet! Station Signage',
+    subtitle: 'Pop-Up Interactive Experience & Transparent Pricing Guide',
+    category: 'Point-of-Sale Poster',
+    format: 'Event Display Signage (A4 / 1080 × 1440 px)',
+    dimensions: 'A4 & Social Poster',
+    description: 'Charming, pastel-themed point-of-sale poster for on-ground pop-up market stalls. Guides customers step-by-step through customizing handmade bead flower bouquets: Step 1 (Pick stems), Step 2 (Assembly by team). Clearly breaks down pricing: ₱89 (3 fillers, 4 flower stems), ₱59 (2 fillers, 3 flower stems), and +₱15 per extra stem.',
+    fileName: 'BYO Bouquet - Bonbon BLings.png',
+    imageUrl: '/samples/BYO Bouquet - Bonbon BLings.png',
+    canvaLink: '',
+    gradient: 'from-pink-400 via-rose-300 to-sky-300',
+    tags: ['Point-of-Sale', 'Pricing Guide', 'Pop-Up Signage', 'Interactive Station']
+  },
+  {
+    id: 'bonbon-don-pacifico-popup',
+    client: 'Bonbon Blings',
+    title: 'Pop-Up Alert: "Ready to Bling Up Your Cart?"',
+    subtitle: 'Don Pacifico Events Place • Las Ramblas, Uptown CDO',
+    category: 'Event Campaign',
+    format: 'Social Media Feed Post',
+    dimensions: '1080 × 1350 px (Portrait 4:5)',
+    description: 'Eye-catching pop-up market announcement designed for Instagram and Facebook feeds. Features a whimsical rose-gold wire shopping basket displaying real ring trays, custom keychains, and hair accessories framed by vibrant bougainvillea flowers to announce the 3-day market at Las Ramblas, Uptown CDO.',
+    fileName: 'socmed posting.png',
+    imageUrl: '/samples/socmed posting.png',
+    canvaLink: '',
+    gradient: 'from-sky-300 via-rose-300 to-pink-400',
+    tags: ['Pop-Up Announcement', 'Social Campaign', 'Visual Layout', 'Uptown CDO']
+  },
+  {
+    id: 'bonbon-blossom-market',
+    client: 'Bonbon Blings',
+    title: 'Pop-Up Alert: Blossom Market by Dear Market PH',
+    subtitle: 'Regatta Square, Uptown CDO • March 13–15 (4PM–11PM)',
+    category: 'Bazaar Announcement',
+    format: 'Social Media Feed Post',
+    dimensions: '1080 × 1350 px (Portrait 4:5)',
+    description: 'Springtime botanical marketing collateral announcing Bonbon Blings’ exhibition booth at Regatta Square. Designed with soft sage green paper textures, pink envelope accents, tulip bouquets, and clear date/time coordinates.',
+    fileName: 'socmed posting (1).png',
+    imageUrl: '/samples/socmed posting (1).png',
+    canvaLink: '',
+    gradient: 'from-emerald-300 via-pink-300 to-rose-300',
+    tags: ['Bazaar Collateral', 'Event Promotion', 'Botanical Design', 'Dear Market PH']
+  },
+
+  // --- DILG REGIONAL LEGAL SERVICE REGION X ---
+  {
+    id: 'dilg-google-site-portal',
+    client: 'DILG Region X',
+    title: 'DILG-X Regional Legal Service Portal',
+    subtitle: 'Official Regional Knowledge Base & Intranet Hub (Google Sites)',
+    category: 'Government Intranet & Web Portal',
+    format: 'Live Google Sites Web Application',
+    dimensions: 'Responsive Desktop & Mobile Web Portal',
+    description: 'Spearheaded and developed the official intranet and knowledge portal for the Department of the Interior and Local Government (DILG) Region X Regional Legal Service during 480 hours of legal internship. Centralizes regional legal consultation intake, advisory issuances, organizational legal directories, compliance guidelines, and downloadable administrative templates for local government units.',
+    fileName: 'dilg-site-screenshot.png',
+    imageUrl: '',
+    externalLink: 'https://sites.google.com/view/ord-rls-region-10/home?authuser=0',
+    canvaLink: 'https://sites.google.com/view/ord-rls-region-10/home?authuser=0',
+    gradient: 'from-blue-700 via-indigo-800 to-emerald-700',
+    tags: ['Google Sites', 'Legal Ops', 'Intranet Architecture', 'DILG Region X', 'Government Portal']
+  }
+];
+
+

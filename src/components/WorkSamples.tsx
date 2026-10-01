@@ -13,8 +13,15 @@ import {
   ChevronRight,
   ExternalLink,
   Shield,
-  Download
+  Download,
+  Maximize2,
+  Sparkles,
+  Globe
 } from 'lucide-react';
+import { CanvaWorkSample } from '../types';
+import { CANVA_WORK_SAMPLES } from '../data/portfolioData';
+import { CanvaLightboxModal } from './CanvaLightboxModal';
+import { WorkSamplePlaceholder } from './WorkSamplePlaceholder';
 
 export const WorkSamples: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'calendar' | 'sheets' | 'minutes' | 'canva' | 'sop'>('calendar');
@@ -22,6 +29,15 @@ export const WorkSamples: React.FC = () => {
   // Interactive sample state for sheets
   const [sheetSearch, setSheetSearch] = useState('');
   const [sheetFilter, setSheetFilter] = useState<'All' | 'Completed' | 'Pending' | 'In Review'>('All');
+
+  // Canva client filtering & lightbox preview state
+  const [canvaClientFilter, setCanvaClientFilter] = useState<'All' | 'Clarion-Aimera' | 'Bonbon Blings' | 'DILG Region X'>('All');
+  const [selectedCanvaSample, setSelectedCanvaSample] = useState<CanvaWorkSample | null>(null);
+
+  const filteredCanvaSamples = CANVA_WORK_SAMPLES.filter((sample) => {
+    if (canvaClientFilter === 'All') return true;
+    return sample.client === canvaClientFilter;
+  });
 
   const sampleSheetData = [
     { id: 'REC-1041', task: 'DILG Regional Legal Case Docketing & Archival', category: 'Legal Admin', owner: 'Niña B.', status: 'Completed', deadline: '2026-04-15', accuracy: '100%' },
@@ -414,68 +430,158 @@ export const WorkSamples: React.FC = () => {
                       Professional marketing and executive design: polished color consistency, modern typography, social media engagement banners, and pitch presentations.
                     </p>
                   </div>
-                  <div className="text-xs bg-rose-50 text-rose-700 border border-rose-200 px-3 py-1.5 rounded-lg font-semibold">
-                    Canva Pro Certified Workflow
+                  <div className="text-xs bg-rose-50 text-rose-700 border border-rose-200 px-3 py-1.5 rounded-lg font-semibold shrink-0 flex items-center gap-1.5">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>Canva Pro & Web Portals</span>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  {/* Sample 1: Bonbon Blings Social */}
-                  <div className="bg-white rounded-2xl p-4 border border-slate-200 group hover:border-orange-400 transition-colors shadow-xs">
-                    <div className="h-40 rounded-xl bg-gradient-to-tr from-rose-500 via-orange-400 to-amber-300 border border-orange-200 flex flex-col justify-between p-4 relative overflow-hidden shadow-xs">
-                      <div className="text-[10px] font-bold uppercase tracking-wider text-white bg-slate-900/30 w-fit px-2 py-0.5 rounded backdrop-blur-xs">E-Commerce Brand Asset</div>
-                      <div className="space-y-1">
-                        <div className="text-sm font-extrabold text-white drop-shadow-xs">Bonbon Blings Collection</div>
-                        <div className="text-[11px] text-white/90 font-medium">Summer Showcase • 20% Off Launch</div>
-                      </div>
-                      <div className="text-[10px] text-white/90 font-semibold flex items-center justify-between pt-2 border-t border-white/20">
-                        <span>Canva Social Post</span>
-                        <span>1080x1080px</span>
-                      </div>
-                    </div>
-                    <h4 className="font-bold text-slate-900 text-xs mt-3">Instagram & Facebook Carousel</h4>
-                    <p className="text-[11px] text-slate-600 mt-1">
-                      Full marketing asset suite including product features, price tags, and highlight stories that drove retail sales.
-                    </p>
-                  </div>
+                {/* Client Category Filter Bar */}
+                <div className="flex flex-wrap items-center gap-2 p-1.5 bg-slate-100/90 rounded-2xl border border-slate-200 w-fit">
+                  <button
+                    onClick={() => setCanvaClientFilter('All')}
+                    className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                      canvaClientFilter === 'All'
+                        ? 'bg-white text-slate-900 shadow-xs border border-slate-200'
+                        : 'text-slate-600 hover:text-slate-900'
+                    }`}
+                  >
+                    All Works ({CANVA_WORK_SAMPLES.length})
+                  </button>
 
-                  {/* Sample 2: Executive Pitch Deck */}
-                  <div className="bg-white rounded-2xl p-4 border border-slate-200 group hover:border-orange-400 transition-colors shadow-xs">
-                    <div className="h-40 rounded-xl bg-gradient-to-tr from-amber-500 via-orange-500 to-rose-500 border border-orange-200 flex flex-col justify-between p-4 relative overflow-hidden shadow-xs">
-                      <div className="text-[10px] font-bold uppercase tracking-wider text-white bg-slate-900/30 w-fit px-2 py-0.5 rounded backdrop-blur-xs">Presentation Deck</div>
-                      <div className="space-y-1">
-                        <div className="text-sm font-extrabold text-white drop-shadow-xs">Ways & Means Annual Report</div>
-                        <div className="text-[11px] text-white/90 font-medium">KASAMA Student Council • 16:9 HD</div>
-                      </div>
-                      <div className="text-[10px] text-white/90 font-semibold flex items-center justify-between pt-2 border-t border-white/20">
-                        <span>Executive Slides</span>
-                        <span>24 Slides Deck</span>
-                      </div>
-                    </div>
-                    <h4 className="font-bold text-slate-900 text-xs mt-3">Executive Slide Deck Design</h4>
-                    <p className="text-[11px] text-slate-600 mt-1">
-                      Clean data visualization, high-readability charts, and branded slide layouts for leadership assemblies.
-                    </p>
-                  </div>
+                  <button
+                    onClick={() => setCanvaClientFilter('Clarion-Aimera')}
+                    className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                      canvaClientFilter === 'Clarion-Aimera'
+                        ? 'bg-red-700 text-white shadow-xs'
+                        : 'text-slate-600 hover:text-red-700'
+                    }`}
+                  >
+                    <span className="w-2 h-2 rounded-full bg-red-400"></span>
+                    <span>Clarion-Aimera (5 Assets)</span>
+                  </button>
 
-                  {/* Sample 3: Municipal Announcement */}
-                  <div className="bg-white rounded-2xl p-4 border border-slate-200 group hover:border-rose-400 transition-colors shadow-xs">
-                    <div className="h-40 rounded-xl bg-gradient-to-tr from-rose-500 via-pink-500 to-amber-400 border border-rose-200 flex flex-col justify-between p-4 relative overflow-hidden shadow-xs">
-                      <div className="text-[10px] font-bold uppercase tracking-wider text-white bg-slate-900/30 w-fit px-2 py-0.5 rounded backdrop-blur-xs">Public Information</div>
-                      <div className="space-y-1">
-                        <div className="text-sm font-extrabold text-white drop-shadow-xs">DOLE SPES Recruitment Notice</div>
-                        <div className="text-[11px] text-white/90 font-medium">PESO Office Medina • Public Advisory</div>
+                  <button
+                    onClick={() => setCanvaClientFilter('Bonbon Blings')}
+                    className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                      canvaClientFilter === 'Bonbon Blings'
+                        ? 'bg-pink-600 text-white shadow-xs'
+                        : 'text-slate-600 hover:text-pink-600'
+                    }`}
+                  >
+                    <span className="w-2 h-2 rounded-full bg-pink-300"></span>
+                    <span>Bonbon Blings (4 Assets + Pitch Deck)</span>
+                  </button>
+
+                  <button
+                    onClick={() => setCanvaClientFilter('DILG Region X')}
+                    className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                      canvaClientFilter === 'DILG Region X'
+                        ? 'bg-blue-700 text-white shadow-xs'
+                        : 'text-slate-600 hover:text-blue-700'
+                    }`}
+                  >
+                    <Globe className="w-3.5 h-3.5 text-blue-300" />
+                    <span>DILG Regional Legal Service (Google Site)</span>
+                  </button>
+                </div>
+
+                {/* Grid of Canva & Web Samples */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                  {filteredCanvaSamples.map((sample) => (
+                    <div
+                      key={sample.id}
+                      className="bg-white rounded-2xl p-4 border border-slate-200 hover:border-orange-400 hover:shadow-md transition-all flex flex-col justify-between group shadow-2xs"
+                    >
+                      <div>
+                        {/* Thumbnail Container / Image Placeholder */}
+                        <div 
+                          onClick={() => setSelectedCanvaSample(sample)}
+                          className="h-52 rounded-xl border border-slate-200/80 relative overflow-hidden shadow-xs transition-all cursor-pointer group-hover:shadow-sm"
+                        >
+                          <WorkSamplePlaceholder sample={sample} />
+
+                          {/* Hover action overlay for site visitors */}
+                          <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 pointer-events-none z-20">
+                            <span className="px-3 py-1.5 rounded-xl bg-white/95 text-slate-900 font-semibold text-xs shadow-md flex items-center gap-1.5 backdrop-blur-xs">
+                              <Maximize2 className="w-3.5 h-3.5" />
+                              <span>{sample.pdfSlides ? 'View 8 Slides' : 'Preview Sample'}</span>
+                            </span>
+                          </div>
+
+                          {/* External Link Indicator for Google Site */}
+                          {sample.externalLink && (
+                            <div className="absolute top-2.5 right-2.5 text-[10px] font-bold text-blue-700 bg-blue-50/95 border border-blue-200 px-2 py-0.5 rounded-md shadow-2xs flex items-center gap-1 backdrop-blur-xs z-10 pointer-events-none">
+                              <span>Google Site</span>
+                              <ExternalLink className="w-2.5 h-2.5" />
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Title & Description */}
+                        <div className="mt-3.5 space-y-1">
+                          <div className="flex items-center gap-2">
+                            <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md ${
+                              sample.client === 'Clarion-Aimera' 
+                                ? 'bg-red-50 text-red-700 border border-red-200' 
+                                : sample.client === 'Bonbon Blings'
+                                ? 'bg-pink-50 text-pink-700 border border-pink-200'
+                                : 'bg-blue-50 text-blue-700 border border-blue-200'
+                            }`}>
+                              {sample.client}
+                            </span>
+                            <span className="text-[11px] text-slate-500 font-medium">{sample.category}</span>
+                          </div>
+
+                          <h4 
+                            onClick={() => setSelectedCanvaSample(sample)}
+                            className="font-bold text-slate-900 text-sm hover:text-orange-600 transition-colors cursor-pointer mt-1"
+                          >
+                            {sample.title}
+                          </h4>
+                          <p className="text-[11px] font-medium text-orange-600">{sample.subtitle}</p>
+                          <p className="text-[11px] text-slate-600 mt-1 line-clamp-2 leading-relaxed">
+                            {sample.description}
+                          </p>
+                        </div>
                       </div>
-                      <div className="text-[10px] text-white/90 font-semibold flex items-center justify-between pt-2 border-t border-white/20">
-                        <span>Digital Flyer & Print</span>
-                        <span>A4 & Mobile</span>
+
+                      {/* Card Footer Actions */}
+                      <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+                        <button
+                          onClick={() => setSelectedCanvaSample(sample)}
+                          className="text-xs font-semibold text-slate-600 hover:text-slate-900 flex items-center gap-1 cursor-pointer transition-colors"
+                        >
+                          <Maximize2 className="w-3.5 h-3.5 text-slate-400" />
+                          <span>{sample.pdfSlides ? 'View 8 Slides' : 'Enlarge / Details'}</span>
+                        </button>
+
+                        {sample.externalLink ? (
+                          <a
+                            href={sample.externalLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-colors"
+                          >
+                            <span>Open Google Site</span>
+                            <ExternalLink className="w-3 h-3" />
+                          </a>
+                        ) : sample.canvaLink ? (
+                          <a
+                            href={sample.canvaLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold text-rose-700 bg-rose-50 hover:bg-rose-100 border border-rose-200 transition-colors"
+                          >
+                            <span>Open in Canva</span>
+                            <ExternalLink className="w-3 h-3" />
+                          </a>
+                        ) : (
+                          <span className="text-[11px] text-slate-400 font-medium">Canva Pro</span>
+                        )}
                       </div>
                     </div>
-                    <h4 className="font-bold text-slate-900 text-xs mt-3">Government Public Notices & Infographics</h4>
-                    <p className="text-[11px] text-slate-600 mt-1">
-                      Clear step-by-step citizen guides, eligibility requirements, and deadline callouts formatted for high clarity.
-                    </p>
-                  </div>
+                  ))}
                 </div>
               </div>
             )}
@@ -549,6 +655,12 @@ export const WorkSamples: React.FC = () => {
         </div>
 
       </div>
+
+      {/* Lightbox Modal for Full Sample Preview */}
+      <CanvaLightboxModal
+        sample={selectedCanvaSample}
+        onClose={() => setSelectedCanvaSample(null)}
+      />
     </section>
   );
 };
