@@ -470,7 +470,7 @@ export const WorkSamples: React.FC = () => {
                     }`}
                   >
                     <span className="w-2 h-2 rounded-full bg-pink-300"></span>
-                    <span>Bonbon Blings (4 Assets + Pitch Deck)</span>
+                    <span>Bonbon Blings (3 Assets)</span>
                   </button>
 
                   <button
@@ -505,7 +505,7 @@ export const WorkSamples: React.FC = () => {
                           <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 pointer-events-none z-20">
                             <span className="px-3 py-1.5 rounded-xl bg-white/95 text-slate-900 font-semibold text-xs shadow-md flex items-center gap-1.5 backdrop-blur-xs">
                               <Maximize2 className="w-3.5 h-3.5" />
-                              <span>{sample.pdfSlides ? 'View 8 Slides' : 'Preview Sample'}</span>
+                              <span>Preview Sample</span>
                             </span>
                           </div>
 
@@ -553,7 +553,7 @@ export const WorkSamples: React.FC = () => {
                           className="text-xs font-semibold text-slate-600 hover:text-slate-900 flex items-center gap-1 cursor-pointer transition-colors"
                         >
                           <Maximize2 className="w-3.5 h-3.5 text-slate-400" />
-                          <span>{sample.pdfSlides ? 'View 8 Slides' : 'Enlarge / Details'}</span>
+                          <span>Enlarge / Details</span>
                         </button>
 
                         {sample.externalLink ? (

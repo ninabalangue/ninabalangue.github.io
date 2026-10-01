@@ -1,19 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { 
   X, 
   ExternalLink, 
   Sparkles, 
   Tag, 
-  ChevronLeft, 
-  ChevronRight, 
-  Layers, 
   CheckCircle2, 
   Globe, 
-  Phone, 
-  Mail, 
-  MapPin,
-  ShieldCheck,
-  Award
+  ShieldCheck, 
+  Award 
 } from 'lucide-react';
 import { CanvaWorkSample } from '../types';
 import { WorkSamplePlaceholder } from './WorkSamplePlaceholder';
@@ -27,22 +21,9 @@ export const CanvaLightboxModal: React.FC<CanvaLightboxModalProps> = ({
   sample,
   onClose,
 }) => {
-  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-
-  useEffect(() => {
-    setCurrentSlideIndex(0);
-  }, [sample]);
-
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
-      if (sample?.pdfSlides) {
-        if (e.key === 'ArrowRight') {
-          setCurrentSlideIndex((prev) => Math.min(prev + 1, sample.pdfSlides!.length - 1));
-        } else if (e.key === 'ArrowLeft') {
-          setCurrentSlideIndex((prev) => Math.max(prev - 1, 0));
-        }
-      }
     };
     if (sample) {
       window.addEventListener('keydown', handleKeyDown);
@@ -55,8 +36,6 @@ export const CanvaLightboxModal: React.FC<CanvaLightboxModalProps> = ({
   }, [sample, onClose]);
 
   if (!sample) return null;
-
-  const currentSlide = sample.pdfSlides ? sample.pdfSlides[currentSlideIndex] : null;
 
   return (
     <div 
@@ -94,94 +73,8 @@ export const CanvaLightboxModal: React.FC<CanvaLightboxModalProps> = ({
 
         {/* Modal Body */}
         <div className="p-6 sm:p-8 space-y-6">
-
-          {/* 1. PDF SLIDE DECK VIEWER (For Bonbon Blings 8-Page Pitch Deck) */}
-          {sample.pdfSlides && currentSlide ? (
-            <div className="space-y-4">
-              {/* Slide Navigator Header */}
-              <div className="flex items-center justify-between bg-slate-100 px-4 py-2.5 rounded-2xl border border-slate-200 text-xs">
-                <div className="flex items-center gap-2 font-semibold text-slate-800">
-                  <Layers className="w-4 h-4 text-orange-500" />
-                  <span>Canva Pitch Deck • Slide {currentSlide.slideNumber} of {sample.pdfSlides.length}</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <button
-                    onClick={() => setCurrentSlideIndex((prev) => Math.max(prev - 1, 0))}
-                    disabled={currentSlideIndex === 0}
-                    className="p-1.5 rounded-lg bg-white border border-slate-200 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"
-                    title="Previous Slide"
-                  >
-                    <ChevronLeft className="w-4 h-4 text-slate-700" />
-                  </button>
-                  <span className="font-mono text-xs px-2 font-bold text-slate-700">
-                    {currentSlideIndex + 1}/{sample.pdfSlides.length}
-                  </span>
-                  <button
-                    onClick={() => setCurrentSlideIndex((prev) => Math.min(prev + 1, sample.pdfSlides!.length - 1))}
-                    disabled={currentSlideIndex === sample.pdfSlides.length - 1}
-                    className="p-1.5 rounded-lg bg-white border border-slate-200 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"
-                    title="Next Slide"
-                  >
-                    <ChevronRight className="w-4 h-4 text-slate-700" />
-                  </button>
-                </div>
-              </div>
-
-              {/* Slide Thumbnail Navigation Strip */}
-              <div className="grid grid-cols-4 sm:grid-cols-8 gap-2">
-                {sample.pdfSlides.map((slide, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setCurrentSlideIndex(i)}
-                    className={`p-2 rounded-xl text-center border transition-all cursor-pointer text-xs ${
-                      i === currentSlideIndex 
-                        ? 'border-orange-500 bg-orange-50 text-orange-800 font-bold shadow-xs' 
-                        : 'border-slate-200 bg-slate-50 hover:bg-white text-slate-600'
-                    }`}
-                  >
-                    <div className="text-[10px] font-mono text-slate-400">P.{slide.slideNumber}</div>
-                    <div className="truncate text-[10px] font-semibold mt-0.5">{slide.highlight || `Slide ${slide.slideNumber}`}</div>
-                  </button>
-                ))}
-              </div>
-
-              {/* Main Slide Card Presentation */}
-              <div className="rounded-2xl border border-slate-200 overflow-hidden shadow-sm bg-gradient-to-tr from-pink-50 via-rose-50/70 to-amber-50 p-6 sm:p-8 min-h-[300px] flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center justify-between pb-3 border-b border-pink-200/60 mb-4">
-                    <span className="text-xs font-bold uppercase tracking-wider text-rose-700 bg-white/80 px-2.5 py-1 rounded-md border border-rose-200">
-                      {currentSlide.highlight || 'Executive Proposal'}
-                    </span>
-                    <span className="text-xs font-mono text-slate-500">16:9 Presentation Format</span>
-                  </div>
-
-                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-                    {currentSlide.title}
-                  </h3>
-                  {currentSlide.subtitle && (
-                    <p className="text-xs sm:text-sm font-semibold text-rose-700 mt-1">
-                      {currentSlide.subtitle}
-                    </p>
-                  )}
-
-                  <div className="mt-5 space-y-2.5">
-                    {currentSlide.content.map((point, idx) => (
-                      <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 bg-white/70 p-3 rounded-xl border border-pink-200/60">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                        <span className="leading-relaxed">{point}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="pt-4 border-t border-pink-200/60 mt-6 flex items-center justify-between text-xs text-slate-500">
-                  <span>Bonbon Blings • Designed in Canva Pro by Niña Balangue</span>
-                  <span>Use &larr; &rarr; arrow keys to navigate slides</span>
-                </div>
-              </div>
-            </div>
-          ) : sample.id === 'dilg-google-site-portal' ? (
-            /* 2. DILG REGIONAL LEGAL SERVICE GOOGLE SITES SHOWCASE */
+          {sample.id === 'dilg-google-site-portal' ? (
+            /* 1. DILG REGIONAL LEGAL SERVICE GOOGLE SITES SHOWCASE */
             <div className="space-y-4">
               <div className="rounded-2xl border border-slate-200 bg-gradient-to-tr from-blue-900 via-indigo-900 to-slate-900 p-8 text-white relative overflow-hidden shadow-md">
                 <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -237,7 +130,7 @@ export const CanvaLightboxModal: React.FC<CanvaLightboxModalProps> = ({
               </div>
             </div>
           ) : (
-            /* 3. VISUAL COLLATERAL DISPLAY (Clarion-Aimera & Bonbon Blings Graphics) */
+            /* 2. VISUAL COLLATERAL DISPLAY (Clarion-Aimera & Bonbon Blings Graphics) */
             <div className="rounded-2xl overflow-hidden border border-slate-200 bg-slate-50 relative min-h-[300px] sm:min-h-[420px]">
               <WorkSamplePlaceholder sample={sample} isModal={true} />
             </div>

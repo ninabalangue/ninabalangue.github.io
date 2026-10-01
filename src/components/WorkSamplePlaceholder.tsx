@@ -18,7 +18,7 @@ export const WorkSamplePlaceholder: React.FC<WorkSamplePlaceholderProps> = ({
   const [hasError, setHasError] = useState(false);
   const [triedFallback, setTriedFallback] = useState(false);
 
-  const isPdf = sample.id === 'bonbon-pitch-deck-pdf' || sample.fileName?.endsWith('.pdf');
+  const isPdf = sample.fileName?.endsWith('.pdf');
   const isGoogleSite = sample.id === 'dilg-google-site-portal';
 
   // Client-specific styling accents

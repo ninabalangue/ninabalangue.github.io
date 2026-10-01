@@ -1,7 +1,7 @@
 CLARION-AIMERA & BONBON BLINGS WORK SAMPLES DIRECTORY
 =====================================================
 
-Place your actual image files and presentation PDF into this folder (/public/samples/):
+Place your actual image files into this folder (/public/samples/) or directly in /public/:
 
 1. Cover Page.png
    - Client: Clarion-Aimera Training and Assessment Center
@@ -23,25 +23,19 @@ Place your actual image files and presentation PDF into this folder (/public/sam
    - Client: Clarion-Aimera Training and Assessment Center
    - Type: SMAW Welding Career Ignition Campaign (1080 x 1080 px)
 
-6. bonbon blings presentation.pdf
-   - Client: Bonbon Blings
-   - Type: 8-Page Brand Partnership & Consignment Pitch Deck
-
-7. BYO Bouquet - Bonbon BLings.png
+6. BYO Bouquet - Bonbon BLings.png
    - Client: Bonbon Blings
    - Type: Build Your Own Bead Bouquet Station Signage (A4 / 1080 x 1440 px)
 
-8. socmed posting.png
+7. socmed posting.png
    - Client: Bonbon Blings
    - Type: Pop-Up Alert: "Ready to Bling Up Your Cart?" at Las Ramblas (1080 x 1350 px)
 
-9. socmed posting (1).png
+8. socmed posting (1).png
    - Client: Bonbon Blings
    - Type: Pop-Up Alert: Blossom Market by Dear Market PH (1080 x 1350 px)
 
-10. dilg-site-screenshot.png (Optional)
+9. dilg-site-screenshot.png (Optional)
    - Client: DILG Region X
    - Type: Regional Legal Service Portal Screenshot
    - Live URL: https://sites.google.com/view/ord-rls-region-10/home?authuser=0
-
-TIP: You can also upload these files directly in the web browser by clicking on any placeholder card!
